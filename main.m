@@ -65,7 +65,7 @@ for i = 1:length(Inom)
     fprintf('Lth:  %.2f mH\n\n', Lth(i)*1e3);
 end
 %% Dados
-flow = 1; % 1 - primeira situação, 2- segunda
+flow = 2; % 1 - primeira situação, 2- segunda
 if flow == 1
     monlevade.P = 30e6;
     monlevade.Q = 0;
