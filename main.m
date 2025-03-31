@@ -64,6 +64,52 @@ for i = 1:length(Inom)
     fprintf('Zth:  %.4f Ohms\n', Zth(i));
     fprintf('Lth:  %.2f mH\n\n', Lth(i)*1e3);
 end
+%% Dados
+flow = 1; % 1 - primeira situação, 2- segunda
+if flow == 1
+    monlevade.P = 30e6;
+    monlevade.Q = 0;
+
+    white.P     = 11e6;
+    white.QL    = 1e6;
+    white.QC    = 0;
+    white.S     = sqrt(white.P^2+(white.QL-white.QC)^2);
+    white.Ibase = white.S/(sqrt(3)*230e3);
+
+    brucutu.P     = 8e6;
+    brucutu.QL    = 26e6;
+    brucutu.QC    = 0;
+    brucutu.S     = sqrt(brucutu.P^2+(brucutu.QL-brucutu.QC)^2);
+    brucutu.Ibase = brucutu.S/(sqrt(3)*230e3);
+
+    capacitor.P   = 0;
+    capacitor.QL  = 0;
+    capacitor.QC  = 50e6;
+    capacitor.S     = sqrt(capacitor.P^2+(capacitor.QL-capacitor.QC)^2);
+    capacitor.Ibase = capacitor.S/(sqrt(3)*230e3);
+
+elseif flow == 2
+    monlevade.P = 2e6;
+    monlevade.Q = 0.1e6;
+
+    white.P     = 1e6;
+    white.QL    = 1e6*tand(23);
+    white.QC    = 0;
+    white.S     = sqrt(white.P^2+(white.QL-white.QC)^2);
+    white.Ibase = white.S/(sqrt(3)*230e3);
+
+    brucutu.P     = 1e6;
+    brucutu.QL    = 1e6*tand(23);
+    brucutu.QC    = 0;
+    brucutu.S     = sqrt(brucutu.P^2+(brucutu.QL-brucutu.QC)^2);
+    brucutu.Ibase = brucutu.S/(sqrt(3)*230e3);
+
+    capacitor.P     = 0;
+    capacitor.QL    = 0;
+    capacitor.QC    = 2e6*tand(23);
+    capacitor.S     = sqrt(capacitor.P^2+(capacitor.QL-capacitor.QC)^2);
+    capacitor.Ibase = capacitor.S/(sqrt(3)*230e3);
+end
 
 
 
